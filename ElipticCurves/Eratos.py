@@ -14,3 +14,12 @@ def EratosTable(n):
             except:
                 j+=1
     return Prime
+def GCD(a,b):
+
+        while b!=0:
+            a = a%b
+            b = b + a
+            a = b - a
+            b = b - a
+        return a
+    

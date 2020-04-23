@@ -18,7 +18,7 @@ if((4*A**3 + 27*B**2)%P!=0):
         q = i**2%P
         Qp.append(q)
         i+=1
-    del i
+    del i,q
 
     #Tìm các điểm thuộc đường cong
     Ep = [] #toạ độ đường cong elipstic
@@ -29,18 +29,6 @@ if((4*A**3 + 27*B**2)%P!=0):
             Ep.append((i,P - Qp.index(q_) - 1))
     del i,q_
     print('Bậc của Ep là: ',len(Ep)+1)
-
-    #Bảng kP với P là phần tử sinh đầu tiên tìm được
-    PETable = []
-    for i in Ep:
-        p1 = (0,) + i
-        CoordinatesTable = PrimitiveElementTable(A,B,P,p1)
-        if(len(CoordinatesTable)!=len(Ep)):
-            CoordinatesTable.clear()
-        else:
-            PETable = CoordinatesTable.copy()
-            break
-    del i,p1,CoordinatesTable
 
     print('Select 1: hiển thị danh sách điểm thuộc Ep.')
     print('Select 2: hiển thị danh sách kG với G là 1 điểm thuộc Ep')
@@ -64,17 +52,34 @@ if((4*A**3 + 27*B**2)%P!=0):
         del x,y
         PETableG = PrimitiveElementTable(A,B,P,G)
         z = 1
-        print('k\tlamda\tx\ty')
+        print('k lamda x y')
         for i,j,k in PETableG:
-            print(z,'\t',i,'\t',j,'\t',k)
+            print(z,i,j,k)
             z+=1
         del i,j,k,z
         print('Bậc của G là ',len(PETableG)+1)
 
     elif select == '3':
-        prime = EratosTable(len(Ep) + 1)
+
+        #Bảng kP với P là phần tử sinh đầu tiên tìm được
+        PETable = []
+        for i in Ep:
+            p1 = (0,) + i
+            CoordinatesTable = PrimitiveElementTable(A,B,P,p1)
+            if(len(CoordinatesTable)!=len(Ep)):
+                CoordinatesTable.clear()
+            else:
+                PETable = CoordinatesTable.copy()
+                break
+        del i,p1,CoordinatesTable
+
+        count = 0
         for i in PETable:
             z = PETable.index(i)
-            if prime.count(z) != 0 or z == 0 or z == 1:
-                print(i) 
+            GCDs = GCD(z,len(Ep) + 1)
+            if GCDs == 1 or z == 0:
+                print(i)
+                count+=1
+        print('Có tất cả',count,'phần tử sinh.')
+        del i,z,count
     input("Press any key to close program")
