@@ -52,3 +52,4 @@ if((4*A**3 + 27*B**2)%P!=0):
             z+=1
         del i,j,k,z
     print('Bậc của Ep là: ',len(Ep)+1)
+    input("Press any key to close program")
