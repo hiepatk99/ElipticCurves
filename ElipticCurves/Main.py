@@ -1,8 +1,10 @@
 from SumPoint import *
 from Table import *
-A = -1
-B = 188
-P = 751
+a = input("A=")
+b = input("B=")
+p = input("P=")
+A, B, P = int(a), int(b), int(p)
+del a,b,p
 #y^2 = x^3 + Ax + B 
 # điều kiện: (4A^3 + 27B^2) mod p != 0
 #Tính Qp
