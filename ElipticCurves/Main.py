@@ -32,7 +32,7 @@ if((4*A**3 + 27*B**2)%P!=0):
             break
     del i,p1,CoordinatesTable
     print('Select 1: show Ep.\nSelect 2: show PETable')
-    select = input('lựa chọn:')
+    select = input('Chose:')
 
     print(select)
     if select=='1':
