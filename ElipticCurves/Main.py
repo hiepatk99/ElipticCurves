@@ -40,7 +40,7 @@ if((4*A**3 + 27*B**2)%P!=0):
         print('x\ty')
         k = 1
         for i,j in Ep:
-            print(k,'\t',i,'\t',j)
+            print(k,5,i,j)
             k+=1
         del i,j,k
 
@@ -81,5 +81,8 @@ if((4*A**3 + 27*B**2)%P!=0):
                 print(i)
                 count+=1
         print('Có tất cả',count,'phần tử sinh.')
-        del i,z,count
+        try:
+            del i,z,count
+        except:
+            del count
     input("Press any key to close program")
